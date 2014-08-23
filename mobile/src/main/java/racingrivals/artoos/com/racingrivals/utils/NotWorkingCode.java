@@ -18,7 +18,7 @@ import racingrivals.artoos.com.racingrivals.models.RacingRivals;
 public class NotWorkingCode
 {
 
-    public static final String myracename= "FakeRace";
+    public static final String myracename = "FakeRace";
 
     public void firebaseStuff()
     {
@@ -42,6 +42,8 @@ public class NotWorkingCode
 
         Race race = new Race();
         race.name = myracename;
+        race.isDistance = true;
+        race.raceValue = 5;
         race.racers.put("mike", mike);
         race.racers.put("steve", steve);
         race.racers.put("jeff", jeff);
@@ -50,37 +52,38 @@ public class NotWorkingCode
         rivals.races.put(myracename, race);
 
 
-
         //  String json = jsonParser.convertObjectToJSON(rivals);
         Firebase ref = new Firebase("https://blistering-fire-2373.firebaseio.com/");
         Firebase rivalRef = ref.child("rival");
         // rivalRef.setValue(rivals);
-        Firebase racers= rivalRef.child("races").child(myracename).child("racers");
-
+        Firebase racers = rivalRef.child("races").child(myracename).child("racers");
 
 
         HashMap<String, Object> racersContainer = new HashMap<String, Object>();
 
-        Map<String,Object> newRacer=new HashMap<String,Object>();
-        newRacer.put("name","steve2");
+        Map<String, Object> newRacer = new HashMap<String, Object>();
+        newRacer.put("name", "steve2");
 
 
-        racersContainer.put("steve2",newRacer);
+        racersContainer.put("steve2", newRacer);
 
         racers.updateChildren(racersContainer);
 
 
-        rivalRef.addValueEventListener(new ValueEventListener() {
+        rivalRef.addValueEventListener(new ValueEventListener()
+        {
             @Override
-            public void onDataChange(DataSnapshot snapshot) {
+            public void onDataChange(DataSnapshot snapshot)
+            {
                 // do some stuff once
             }
+
             @Override
-            public void onCancelled(FirebaseError firebaseError) {
+            public void onCancelled(FirebaseError firebaseError)
+            {
             }
         });
     }
-
 
 
     //Firebase updateCurrentStep=rivalRef.child(myracename).child(jeff.name).child("steps");

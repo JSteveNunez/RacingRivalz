@@ -9,6 +9,9 @@ import java.util.Map;
 public class Race
 {
     public String name;
+    public boolean isDistance;
+    public double raceValue;
     public Map<String, Racer> racers = new HashMap<String, Racer>();
+
 
 }
