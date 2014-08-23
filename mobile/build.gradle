@@ -19,6 +19,9 @@ android {
     }
 }
 
+apply plugin: 'android-unit-test'
+
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     wearApp project(':wear')
@@ -36,4 +39,9 @@ dependencies {
     compile 'com.android.support:support-v13:20.+'
     compile 'de.greenrobot:eventbus:2.2.1'
     compile 'com.android.support:appcompat-v7:20.0.0'
+
+    //test dependencies
+    androidTestCompile 'com.jayway.android.robotium:robotium-solo:4.3'
+    testCompile 'junit:junit:4.10'
+    testCompile 'org.robolectric:robolectric:2.+'
 }
