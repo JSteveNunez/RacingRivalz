@@ -8,22 +8,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.artoos.racing.models.Race;
-import com.artoos.racing.models.Racer;
 import com.artoos.racing.utils.DataStore;
 import com.artoos.racing.utils.FirebaseHelper;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
-
-import org.w3c.dom.Comment;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -104,12 +98,12 @@ public class ListActivity extends Activity
                 int itemPosition = position;
 
                 // ListView Clicked item value
-                String raceName = (String) listView.getItemAtPosition(position);
+                String raceName = ((Race)listView.getItemAtPosition(position)).name;
 
-                // Show Alert
-                Toast.makeText(getApplicationContext(),
-                        "Position :" + itemPosition + "  ListItem : " + raceName, Toast.LENGTH_LONG)
-                        .show();
+//                // Show Alert
+//                Toast.makeText(getApplicationContext(),
+//                        "Position :" + itemPosition + "  ListItem : " + raceName, Toast.LENGTH_LONG)
+//                        .show();
                 DataStore.getInstance().setRace(raceName);
                 FirebaseHelper.getInstance().addRacer();
                 finish();
