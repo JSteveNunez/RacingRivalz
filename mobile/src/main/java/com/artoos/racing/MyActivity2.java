@@ -1,4 +1,4 @@
-package racingrivals.artoos.com.racingrivals;
+package com.artoos.racing;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -6,6 +6,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.artoos.racing.utils.FirebaseSetup;
+
+import racingrivals.artoos.com.racingrivals.R;
 
 
 public class MyActivity2 extends Activity {
