@@ -6,9 +6,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.artoos.racing.utils.FirebaseHelper;
 
@@ -20,18 +23,23 @@ import racingrivals.artoos.com.racingrivals.R;
 public class CreateRaceActivity extends Activity
 {
 
-    @InjectView(R.id.textView)
-    TextView mTextView;
-    @InjectView(R.id.editText)
-    EditText mEditText;
-    @InjectView(R.id.radioButton)
-    RadioButton mRadioButton;
-    @InjectView(R.id.radioButton2)
-    RadioButton mRadioButton2;
-    @InjectView(R.id.radioButton3)
-    RadioButton mRadioButton3;
-    @InjectView(R.id.radioButton4)
-    RadioButton mRadioButton4;
+    @InjectView(R.id.raceName)
+    EditText raceName;
+    @InjectView(R.id.valueLabel)
+    TextView valueLabel;
+    @InjectView(R.id.value)
+    EditText value;
+    @InjectView(R.id.distance)
+    ToggleButton distance;
+    @InjectView(R.id.time)
+    ToggleButton time;
+    @InjectView(R.id.race)
+    ToggleButton race;
+    @InjectView(R.id.rivalry)
+    ToggleButton rivalry;
+    private String name;
+    private boolean isDistance;
+    private long distanceOrTime;
 
     public static void getLaunchIntent(Context context)
     {
@@ -45,6 +53,75 @@ public class CreateRaceActivity extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.race_newrace);
         ButterKnife.inject(this);
+
+        distance.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b) {
+                    time.setChecked(false);
+                    distance.setTextColor(getResources().getColor(R.color.white));
+                    time.setTextColor(getResources().getColor(R.color.text_my_wallet));
+                    isDistance = true;
+                    valueLabel.setText("Distance");
+                } else {
+                    time.setChecked(true);
+                    distance.setTextColor(getResources().getColor(R.color.text_my_wallet));
+                    time.setTextColor(getResources().getColor(R.color.white));
+                    isDistance = false;
+                    valueLabel.setText("Time");
+                }
+            }
+        });
+
+        time.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b) {
+                    distance.setChecked(false);
+                    distance.setTextColor(getResources().getColor(R.color.text_my_wallet));
+                    time.setTextColor(getResources().getColor(R.color.white));
+                    isDistance = false;
+                    valueLabel.setText("Time");
+                } else {
+                    distance.setChecked(true);
+                    distance.setTextColor(getResources().getColor(R.color.white));
+                    time.setTextColor(getResources().getColor(R.color.text_my_wallet));
+                    isDistance = true;
+                    valueLabel.setText("Distance");
+                }
+            }
+        });
+
+        race.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b) {
+                    rivalry.setChecked(false);
+                    race.setTextColor(getResources().getColor(R.color.white));
+                    rivalry.setTextColor(getResources().getColor(R.color.text_my_wallet));
+                } else {
+                    rivalry.setChecked(true);
+                    race.setTextColor(getResources().getColor(R.color.text_my_wallet));
+                    rivalry.setTextColor(getResources().getColor(R.color.white));
+                }
+            }
+        });
+
+        rivalry.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b) {
+                    race.setChecked(false);
+                    race.setTextColor(getResources().getColor(R.color.text_my_wallet));
+                    rivalry.setTextColor(getResources().getColor(R.color.white));
+
+                } else {
+                    race.setChecked(true);
+                    race.setTextColor(getResources().getColor(R.color.white));
+                    rivalry.setTextColor(getResources().getColor(R.color.text_my_wallet));
+                }
+            }
+        });
     }
 
 
@@ -73,7 +150,10 @@ public class CreateRaceActivity extends Activity
     @OnClick(R.id.createRace)
     public void createRace()
     {
-        FirebaseHelper.getInstance().createNewRace("Mike's Race", true, 5);
+        name = raceName.getText().toString();
+        String valueText = value.getText().toString();
+        distanceOrTime = Long.parseLong(valueText);
+        FirebaseHelper.getInstance().createNewRace(name, isDistance, distanceOrTime);
         finish();
     }
 

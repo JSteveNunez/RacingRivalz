@@ -8,16 +8,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
 import com.artoos.racing.models.Racer;
 import com.artoos.racing.utils.DataStore;
 import com.artoos.racing.utils.FirebaseHelper;
-
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
 import racingrivals.artoos.com.racingrivals.R;
-
 
 public class FirstActivity extends Activity
 {

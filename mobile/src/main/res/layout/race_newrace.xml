@@ -1,76 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:orientation="vertical"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Race Name"
-        android:id="@+id/textView" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/editText" />
-
-    <RadioGroup
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        <RadioButton
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Race Name"
+            android:padding="@dimen/padding_medium"
+            android:id="@+id/textView"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/raceName"
+            android:layout_margin="@dimen/padding_medium"/>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/padding_wedge"
+            android:gravity="center">
+
+            <ToggleButton
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:padding="@dimen/padding_medium"
+                android:textOn="Distance"
+                android:textOff="Distance"
+                android:id="@+id/distance"
+                android:background="@drawable/toggle_background"
+                android:textColor="@color/white"
+
+                />
+            <ToggleButton
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_medium"
+                android:checked="false"
+                android:textOn="Time"
+                android:textOff="Time"
+                android:id="@+id/time"
+                android:background="@drawable/toggle_background"
+                android:textColor="@color/text_my_wallet"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/padding_wedge"
+            android:gravity="center">
+
+            <ToggleButton
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:padding="@dimen/padding_medium"
+                android:textOn="Race"
+                android:textOff="Race"
+                android:id="@+id/race"
+                android:background="@drawable/toggle_background"
+                android:textColor="@color/white"
+
+                />
+            <ToggleButton
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_medium"
+                android:checked="false"
+                android:textOn="Rivalry"
+                android:textOff="Rivalry"
+                android:id="@+id/rivalry"
+                android:background="@drawable/toggle_background"
+                android:textColor="@color/text_my_wallet"
+                />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Distance"
-            android:id="@+id/radioButton"
-            android:checked="true" />
+            android:padding="@dimen/padding_medium"
+            android:id="@+id/valueLabel"/>
 
-        <RadioButton
-            android:layout_width="wrap_content"
+        <EditText
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Time"
-            android:id="@+id/radioButton2"
-            android:checked="false" />
-        </RadioGroup>
-
-    <RadioGroup
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Race"
-            android:id="@+id/radioButton3"
-            android:checked="true" />
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Rivalry"
-            android:id="@+id/radioButton4"
-            android:checked="false" />
-    </RadioGroup>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Distance/Time"
-        android:id="@+id/valueLabel" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/value" />
-
-
+            android:layout_margin="@dimen/padding_medium"
+            android:id="@+id/value"/>
+    </LinearLayout>
     <Button
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:text="Start Race"
+        android:layout_height="120dp"
+        android:layout_alignParentBottom="true"
+        android:text="Create Race"
         android:id="@+id/createRace"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="100dp"
+        android:background="@drawable/orange_button_pressed"
         />
-</LinearLayout>
+</RelativeLayout>
