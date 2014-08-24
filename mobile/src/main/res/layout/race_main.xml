@@ -51,33 +51,39 @@
             android:padding="@dimen/padding_large"/>
     </LinearLayout>
 
-
-
-    <Button
+    <LinearLayout
         android:layout_above="@+id/race_buttons"
-        android:layout_width="match_parent"
-        android:layout_height="130dp"
-        android:text="Leave Race"
-        android:id="@+id/leaveRace"
-        android:layout_gravity="center_horizontal"
-        android:layout_weight="1"
-        android:textSize="@dimen/text_xlarge"
-        android:padding="@dimen/padding_large"
-        android:background="@drawable/red_button_pressed"
-        />
+        android:id="@+id/start_race_buttons"
+        android:layout_width="fill_parent"
+        android:layout_height="170dp"
+        android:orientation="horizontal"
+        >
 
-    <Button
-        android:layout_above="@+id/race_buttons"
-        android:layout_width="match_parent"
-        android:layout_height="130dp"
-        android:text="Start Race"
-        android:id="@+id/startRace"
-        android:layout_gravity="center_horizontal"
-        android:layout_weight="1"
-        android:textSize="@dimen/text_xlarge"
-        android:padding="@dimen/padding_large"
-        android:background="@drawable/red_button_pressed"
-        />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:text="Leave Race"
+            android:id="@+id/leaveRace"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
+            android:textSize="@dimen/text_xlarge"
+            android:padding="@dimen/padding_large"
+            android:background="@drawable/red_button_pressed"
+            />
+
+        <Button
+            android:layout_above="@+id/race_buttons"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:text="Start Race"
+            android:id="@+id/startRace"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
+            android:textSize="@dimen/text_xlarge"
+            android:padding="@dimen/padding_large"
+            android:background="@drawable/red_button_pressed"
+            />
+    </LinearLayout>
 
 
 </RelativeLayout>
