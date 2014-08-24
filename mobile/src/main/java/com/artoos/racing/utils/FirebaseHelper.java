@@ -114,7 +114,7 @@ public class FirebaseHelper
         racers.updateChildren(racersContainer);
     }
 
-    public void createNewRace(String raceName, Boolean isDistance, Double raceValue)
+    public void createNewRace(String raceName, Boolean isDistance, long raceValue)
     {
         HashMap<String, Object> racesContainer = new HashMap<String, Object>();
         Map<String, Object> newRace = new HashMap<String, Object>();

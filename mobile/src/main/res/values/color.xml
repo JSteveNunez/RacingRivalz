@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--Theme Colors-->
+    <color name="theme_orange">#fd920f</color>
+    <color name="theme_orange_underline">#c94a27</color>
+    <color name="theme_red">#ffff0000</color>
+    <color name="theme_red_pressed">#80ee2c24</color>
+    <color name="theme_yellow">#fff7ef15</color>
+    <color name="theme_yellow_pressed">#80f7ef15</color>
+    <color name="theme_grey">#aaaaaa</color>
+    <color name="white_20">#32ffffff</color>
+    <color name="white_90">#F2ffffff</color>
+    <color name="background_holo_light">#fff3f3f3</color>
+
+    <!--Third Party Activity and Fragment-->
+    <color name="google">#df4a32</color>
+    <color name="google_pressed">#c03d28</color>
+    <color name="facebook">#FF475995</color>
+    <color name="facebook_pressed">#E6475995</color>
+
+    <!--Forms-->
+    <color name="text_my_wallet">#FF868686</color>
+    <color name="done_buttons">#2c978c</color>
+    <color name="action_bar_background">#D4D5D6</color>
+
+    <!--Feed-->
+    <color name="borders_my_wallet">#80C4C4C4</color>
+
+    <!--drink info-->
+    <color name="info_background">#282828</color>
+    <color name="text_drink_info">#686868</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="grey">#7A7A7A</color>
+    <color name="background">#0044AA</color>
+    <color name="bluelight">#449DEF</color>
+    <color name="bluedark">#2F6699</color>
+    <color name="greenlight">#70C656</color>
+    <color name="greendark">#53933F</color>
+    <color name="orangelight">#F3AE1B</color>
+    <color name="orangedark">#BB6008</color>
+    <color name="black">#000000</color>
+
+
+</resources>
