@@ -1,4 +1,4 @@
-package racingrivals.artoos.com.racingrivals;
+package com.artoos.racing;
 
 import android.app.Activity;
 import android.hardware.Sensor;
@@ -13,6 +13,8 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.wearable.MessageApi;
 import com.google.android.gms.wearable.Wearable;
+
+import racingrivals.artoos.com.racingrivals.R;
 
 public class MyActivity extends Activity implements SensorEventListener, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
