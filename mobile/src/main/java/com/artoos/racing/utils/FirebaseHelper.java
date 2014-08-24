@@ -101,16 +101,30 @@ public class FirebaseHelper
         dataStore.setRace(raceName);
         currentRace = races.child(dataStore.getRace());
         racers = currentRace.child("racers");
-        addRacer();
+
     }
 
-    private void addRacer()
+    public void addRacer()
     {
+        currentRace = races.child(dataStore.getRace());
         HashMap<String, Object> racersContainer = new HashMap<String, Object>();
         Map<String, Object> newRacer = new HashMap<String, Object>();
-        newRacer.put("name", "steve2");
-        racersContainer.put("steve2", newRacer);
+        newRacer.put("name", dataStore.getRacer().name);
+        racersContainer.put(dataStore.getRacer().name, newRacer);
         racers.updateChildren(racersContainer);
     }
 
+    public void createNewRace(String raceName, Boolean isDistance, Double raceValue)
+    {
+        HashMap<String, Object> racesContainer = new HashMap<String, Object>();
+        Map<String, Object> newRace = new HashMap<String, Object>();
+        newRace.put("name", raceName);
+        newRace.put("isDistance", isDistance);
+        newRace.put("raceValue", raceValue);
+        racesContainer.put(raceName, newRace);
+        races.updateChildren(racesContainer);
+        dataStore.setRace(raceName);
+        currentRace = races.child(dataStore.getRace());
+        racers = currentRace.child("racers");
+    }
 }
