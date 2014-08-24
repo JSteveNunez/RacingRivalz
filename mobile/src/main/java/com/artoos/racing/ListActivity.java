@@ -4,17 +4,26 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.artoos.racing.models.Race;
+import com.artoos.racing.models.Racer;
 import com.artoos.racing.utils.DataStore;
 import com.artoos.racing.utils.FirebaseHelper;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
+
+import org.w3c.dom.Comment;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -52,11 +61,25 @@ public class ListActivity extends Activity
             @Override
             public void onDataChange(DataSnapshot snapshot)
             {
-                List<String> list = new ArrayList<String>(((HashMap)snapshot.getValue()).keySet());
+                HashMap dataMap = (HashMap) snapshot.getValue();
+                HashMap map= (HashMap) dataMap;
+                ArrayList<String> raceNames = new ArrayList<String>(map.keySet());
+                List<Race> list = new ArrayList<Race>();
+                for (String raceName : raceNames) {
+                    HashMap raceHash = (HashMap) dataMap.get(raceName);
+                    Race race = new Race();
+                    race.name = (String) raceHash.get("name");
+                    if(raceHash.get("isDistance").equals("true")){
+                        race.isDistance = true;
+                    }else{
+                        race.isDistance = false;
+                    }
+                    race.raceValue = (Long) raceHash.get("raceValue");
+                    list.add(race);
+                }
 
 
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(context,
-                        android.R.layout.simple_list_item_1, android.R.id.text1, list);
+                CustomArrayAdapter adapter = new CustomArrayAdapter(context, list);
 
 
                 // Assign adapter to ListView
@@ -94,6 +117,61 @@ public class ListActivity extends Activity
             }
 
         });
+    }
+
+    public class CustomArrayAdapter extends BaseAdapter
+    {
+        private final Context context;
+        private  List<Race> list;
+
+        public CustomArrayAdapter(Context context, List<Race> list){
+            super();
+            this.context = context;
+            this.list = list;
+        }
+
+        @Override
+        public int getCount(){
+            return list.size();
+        }
+
+        @Override
+        public Race getItem(int i) {
+            return list.get(i);
+        }
+
+        @Override
+        public long getItemId(int i) {
+            return i;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            Race currentRace = list.get(position);
+            LayoutInflater inflater = (LayoutInflater) context
+                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            View rowView = inflater.inflate(R.layout.race, parent, false);
+
+            TextView textViewName = (TextView) rowView.findViewById(R.id.raceName);
+            textViewName.setText(currentRace.name);
+
+            TextView textViewType = (TextView) rowView.findViewById(R.id.raceType);
+            if(currentRace.isDistance == true){
+                textViewType.setText("Distance");
+            }else{
+                textViewType.setText("Time");
+            }
+
+            TextView textViewValue = (TextView) rowView.findViewById(R.id.raceValue);
+            textViewValue.setText(String.valueOf(currentRace.raceValue));
+
+            return rowView;
+        }
+
+//        public void setData(List<Comment> commentsMade){
+//            this.comments = commentsMade;
+//            notifyDataSetChanged();
+//        }
     }
 
 }

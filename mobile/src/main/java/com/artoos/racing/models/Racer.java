@@ -25,6 +25,10 @@ public class Racer
         this.name = name;
     }
 
+    public Racer() {
+
+    }
+
 
     public String getName()
     {

@@ -16,7 +16,7 @@ public class FireBaseService extends Service {
     public void onCreate()
     {
         super.onCreate();
-        DataStore.getInstance().getBaseRef().addValueEventListener(new ValueEventListener()
+        DataStore.getInstance().getRacesRef().addValueEventListener(new ValueEventListener()
         {
             @Override
             public void onDataChange(DataSnapshot snapshot)

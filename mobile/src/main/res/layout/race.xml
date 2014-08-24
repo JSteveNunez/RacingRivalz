@@ -16,6 +16,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0.42"
+        android:weightSum="1"
+        android:id="@+id/innerLayout">
         android:weightSum="1">
         <TextView
             android:layout_width="wrap_content"
