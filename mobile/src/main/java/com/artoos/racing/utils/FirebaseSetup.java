@@ -3,10 +3,7 @@ package com.artoos.racing.utils;
 import com.artoos.racing.models.Race;
 import com.artoos.racing.models.Racer;
 import com.artoos.racing.models.RacingRivals;
-import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
-import com.firebase.client.FirebaseError;
-import com.firebase.client.ValueEventListener;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -18,12 +15,13 @@ public class FirebaseSetup
 {
 
     public static final String myracename = "FakeRace2";
-    Firebase ref = new com.firebase.client.Firebase("https://blistering-fire-2373.firebaseio.com/");
+    private Firebase baseRef;
 
     public void firebaseStuff()
     {
         //grab a pointer to the racers
-        Firebase racers = ref.child("races").child(myracename).child("racers");
+        baseRef = DataStore.getInstance().baseRef;
+        Firebase racers = baseRef.child("races").child(myracename).child("racers");
 
 
         Race race = new Race();
@@ -42,23 +40,10 @@ public class FirebaseSetup
         rivals.races.put(myracename, race);
 
 
-        //  String json = jsonParser.convertObjectToJSON(rivals);
-        ref.addValueEventListener(new ValueEventListener()
-        {
-            @Override
-            public void onDataChange(DataSnapshot snapshot)
-            {
-                // do some stuff once
-            }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError)
-            {
-            }
-        });
 
 
-        ref.setValue(rivals);
+
+        baseRef.setValue(rivals);
 
         //add a racer
         HashMap<String, Object> racersContainer = new HashMap<String, Object>();
