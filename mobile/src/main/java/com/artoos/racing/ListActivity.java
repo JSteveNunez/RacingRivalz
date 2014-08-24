@@ -74,7 +74,7 @@ public class ListActivity extends Activity
                     }else{
                         race.isDistance = false;
                     }
-                    race.raceValue = (long) raceHash.get("raceValue");
+                    race.raceValue = (Long) raceHash.get("raceValue");
                     list.add(race);
                 }
 
@@ -157,13 +157,13 @@ public class ListActivity extends Activity
 
             TextView textViewType = (TextView) rowView.findViewById(R.id.raceType);
             if(currentRace.isDistance == true){
-                textViewName.setText("Distance");
+                textViewType.setText("Distance");
             }else{
-                textViewName.setText("Time");
+                textViewType.setText("Time");
             }
 
             TextView textViewValue = (TextView) rowView.findViewById(R.id.raceValue);
-            textViewName.setText(String.valueOf(currentRace.raceValue));
+            textViewValue.setText(String.valueOf(currentRace.raceValue));
 
             return rowView;
         }
