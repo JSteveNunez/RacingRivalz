@@ -13,14 +13,20 @@ import android.widget.TextView;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.data.FreezableUtils;
 import com.google.android.gms.wearable.DataApi;
+import com.google.android.gms.wearable.DataEvent;
 import com.google.android.gms.wearable.DataEventBuffer;
+import com.google.android.gms.wearable.DataItem;
+import com.google.android.gms.wearable.DataMap;
+import com.google.android.gms.wearable.DataMapItem;
 import com.google.android.gms.wearable.Node;
 import com.google.android.gms.wearable.NodeApi;
 import com.google.android.gms.wearable.Wearable;
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 
 import racingrivals.artoos.com.racingrivals.R;
 
@@ -63,13 +69,20 @@ public class MyActivity extends Activity implements DataApi.DataListener, Google
     }
 
     @Override
-    public void onPause() {
-        super.onPause();
-        try {
-            this.unregisterReceiver(receiver);
-        } catch (Exception e) {
-            throw new RuntimeException(e.toString());
+    protected void onStart() {
+        super.onStart();
+        if (!mGoogleApiClient.isConnected()) {
+            mGoogleApiClient.connect();
+            testTextView.setText("connected");
         }
+    }
+
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Wearable.DataApi.removeListener(mGoogleApiClient, this);
+        mGoogleApiClient.disconnect();
     }
 
     @Override
@@ -129,6 +142,21 @@ public class MyActivity extends Activity implements DataApi.DataListener, Google
 
     @Override
     public void onDataChanged(DataEventBuffer dataEvents) {
+        final List<DataEvent> events = FreezableUtils.freezeIterable(dataEvents);
+        dataEvents.close();
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                for (DataEvent event : events) {
+                    if (event.getType() == DataEvent.TYPE_CHANGED) {
+                        DataItem dataItem = event.getDataItem();
+                            DataMap dataMap = DataMapItem.fromDataItem(dataItem).getDataMap();
+                            double steps = dataMap.getDouble("steps");
+                            testTextView.setText(""+steps);
 
+                    }
+                }
+            }
+        });
     }
 }
