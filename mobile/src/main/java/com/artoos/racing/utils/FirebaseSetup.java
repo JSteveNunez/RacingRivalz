@@ -1,24 +1,22 @@
-package racingrivals.artoos.com.racingrivals.utils;
+package com.artoos.racing.utils;
 
+import com.artoos.racing.models.Race;
+import com.artoos.racing.models.Racer;
+import com.artoos.racing.models.RacingRivals;
 import com.firebase.client.DataSnapshot;
-import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import racingrivals.artoos.com.racingrivals.models.Race;
-import racingrivals.artoos.com.racingrivals.models.Racer;
-import racingrivals.artoos.com.racingrivals.models.RacingRivals;
-
 /**
  * Created by Nakhimovich on 8/23/14.
  */
-public class NotWorkingCode
+public class FirebaseSetup
 {
 
-    public static final String myracename = "FakeRace";
+    public static final String myracename = "FakeRace2";
 
     public void firebaseStuff()
     {
@@ -53,10 +51,10 @@ public class NotWorkingCode
 
 
         //  String json = jsonParser.convertObjectToJSON(rivals);
-        Firebase ref = new Firebase("https://blistering-fire-2373.firebaseio.com/");
-        Firebase rivalRef = ref.child("rival");
-        // rivalRef.setValue(rivals);
-        Firebase racers = rivalRef.child("races").child(myracename).child("racers");
+        com.firebase.client.Firebase ref = new com.firebase.client.Firebase("https://blistering-fire-2373.firebaseio.com/");
+        com.firebase.client.Firebase rivalRef = ref.child("rival");
+        rivalRef.setValue(rivals);
+        com.firebase.client.Firebase racers = rivalRef.child("races").child(myracename).child("racers");
 
 
         HashMap<String, Object> racersContainer = new HashMap<String, Object>();
