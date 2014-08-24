@@ -9,7 +9,7 @@ import com.firebase.client.Firebase;
 public class DataStore
 {
     public Racer racer;
-    public String race;
+    public String race="FakeRace2";
     Firebase baseRef = new com.firebase.client.Firebase("https://blistering-fire-2373.firebaseio.com/");
 
 

@@ -17,6 +17,6 @@ public class FireBaseTest extends BaseTestCase
     public void testDataOperations() throws Exception
     {
         FirebaseSetup firebase=new FirebaseSetup();
-        firebase.firebaseStuff();
+        firebase.seedRace();
     }
 }

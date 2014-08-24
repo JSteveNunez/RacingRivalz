@@ -14,47 +14,87 @@ import java.util.Map;
 public class FirebaseSetup
 {
 
-    public static final String myracename = "FakeRace2";
     private Firebase baseRef;
+    private DataStore dataStore = DataStore.getInstance();
+    ;
+    Firebase races;
+    Firebase racers;
+    private Firebase currentRace;
 
-    public void firebaseStuff()
+    public void seedRace()
     {
-        //grab a pointer to the racers
-        baseRef = DataStore.getInstance().baseRef;
-        Firebase racers = baseRef.child("races").child(myracename).child("racers");
+        initRefs();
+        // Race race = createRaceAndRacers();
 
+        //add a racer
+        //addRacer(racers);
 
+        // String fieldToUpdate = "distance";
+        //updateRacerField(racers, fieldToUpdate);
+
+        addRace();
+
+    }
+
+    private Race createRaceAndRacers()
+    {
         Race race = new Race();
-        race.name = myracename;
+        race.name = dataStore.getRace();
         race.isDistance = true;
         race.raceValue = 5;
 
-        Racer mike = new Racer("mike", 20.0, 20.0, 20);
-        Racer steve = new Racer("steve", 20.0, 20.0, 20);
-        Racer jeff = new Racer("jeff", 20.0, 20.0, 20);
-        race.racers.put("mike", mike);
-        race.racers.put("steve", steve);
-        race.racers.put("jeff", jeff);
+        Racer racer = new Racer("mike", 20.0, 20.0, 20);
+        DataStore.getInstance().setRacer(racer);
+        race.racers.put("mike", racer);
+        racer = new Racer("steve", 20.0, 20.0, 20);
+        race.racers.put("steve", racer);
+        racer = new Racer("jeff", 20.0, 20.0, 20);
+        race.racers.put("jeff", racer);
 
         RacingRivals rivals = new RacingRivals();
-        rivals.races.put(myracename, race);
-
-
-
-
+        rivals.races.put(dataStore.getRace(), race);
 
         baseRef.setValue(rivals);
+        return race;
+    }
 
-        //add a racer
+    private void initRefs()
+    {
+        baseRef = dataStore.baseRef;
+        races = baseRef.child("races");
+        currentRace = races.child(dataStore.getRace());
+        racers = currentRace.child("racers");
+    }
+
+    private void updateRacerField(Firebase racers, String fieldToUpdate)
+    {
+        Firebase currentRacerDistance = racers.child(dataStore.getRacer().name).child(fieldToUpdate);
+        currentRacerDistance.setValue(100);
+    }
+
+    private void addRace()
+    {
+        HashMap<String, Object> racesContainer = new HashMap<String, Object>();
+        Map<String, Object> newRace = new HashMap<String, Object>();
+        String raceName = "secondRace";
+        newRace.put("name", raceName);
+        newRace.put("isDistance", true);
+        newRace.put("raceValue", 5);
+        racesContainer.put(raceName, newRace);
+        races.updateChildren(racesContainer);
+        dataStore.setRace(raceName);
+        currentRace = races.child(dataStore.getRace());
+        racers = currentRace.child("racers");
+        addRacer();
+    }
+
+    private void addRacer()
+    {
         HashMap<String, Object> racersContainer = new HashMap<String, Object>();
         Map<String, Object> newRacer = new HashMap<String, Object>();
         newRacer.put("name", "steve2");
         racersContainer.put("steve2", newRacer);
         racers.updateChildren(racersContainer);
-
-        Firebase currentRacerDistance = racers.child(mike.name).child("distance");
-        currentRacerDistance.setValue(100);
-
     }
 
 }

@@ -22,7 +22,7 @@ public class MyActivity2 extends Activity
         startService(intent);
         setContentView(R.layout.activity_my_activity2);
         FirebaseSetup firebase = new FirebaseSetup();
-        firebase.firebaseStuff();
+        firebase.seedRace();
     }
 
 
