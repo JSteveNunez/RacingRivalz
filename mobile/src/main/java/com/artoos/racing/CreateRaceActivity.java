@@ -1,54 +1,50 @@
 package com.artoos.racing;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.TextView;
 
-import com.artoos.racing.models.Racer;
-import com.artoos.racing.utils.DataStore;
 import com.artoos.racing.utils.FirebaseHelper;
 
 import butterknife.ButterKnife;
+import butterknife.InjectView;
 import butterknife.OnClick;
 import racingrivals.artoos.com.racingrivals.R;
 
-
-public class FirstActivity extends Activity
+public class CreateRaceActivity extends Activity
 {
-    FirebaseHelper firebase = FirebaseHelper.getInstance();
+
+    @InjectView(R.id.textView)
+    TextView mTextView;
+    @InjectView(R.id.editText)
+    EditText mEditText;
+    @InjectView(R.id.radioButton)
+    RadioButton mRadioButton;
+    @InjectView(R.id.radioButton2)
+    RadioButton mRadioButton2;
+    @InjectView(R.id.radioButton3)
+    RadioButton mRadioButton3;
+    @InjectView(R.id.radioButton4)
+    RadioButton mRadioButton4;
+
+    public static void getLaunchIntent(Context context)
+    {
+        Intent i = new Intent(context, CreateRaceActivity.class);
+        context.startActivity(i);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        Intent intent = new Intent(this, FireBaseService.class);
-        startService(intent);
-        setContentView(R.layout.race_main);
+        setContentView(R.layout.race_newrace);
         ButterKnife.inject(this);
-        firebase.seedRace();
-    }
-
-
-    @OnClick(R.id.newRace)
-    public void newRace()
-    {
-        CreateRaceActivity.getLaunchIntent(this);
-    }
-
-    @OnClick(R.id.joinRace)
-    public void joinRace()
-    {
-        //TODO: move to another screen
-        DataStore.getInstance().setRacer(new Racer("Mike"));
-        ListActivity.getLaunchIntent(this);
-    }
-
-    @OnClick(R.id.leaveRace)
-    public void leaveRace()
-    {
-
     }
 
 
@@ -56,7 +52,7 @@ public class FirstActivity extends Activity
     public boolean onCreateOptionsMenu(Menu menu)
     {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.my_activity2, menu);
+        getMenuInflater().inflate(R.menu.create_race, menu);
         return true;
     }
 
@@ -73,4 +69,13 @@ public class FirstActivity extends Activity
         }
         return super.onOptionsItemSelected(item);
     }
+
+    @OnClick(R.id.createRace)
+    public void createRace()
+    {
+        FirebaseHelper.getInstance().createNewRace("Mike's Race", true, 5.0);
+        finish();
+    }
+
+
 }

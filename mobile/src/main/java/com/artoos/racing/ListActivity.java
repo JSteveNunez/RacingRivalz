@@ -11,6 +11,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.artoos.racing.utils.DataStore;
+import com.artoos.racing.utils.FirebaseHelper;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
@@ -76,17 +77,18 @@ public class ListActivity extends Activity
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id)
             {
-
                 // ListView Clicked item index
                 int itemPosition = position;
 
                 // ListView Clicked item value
-                String itemValue = (String) listView.getItemAtPosition(position);
+                String raceName = (String) listView.getItemAtPosition(position);
 
                 // Show Alert
                 Toast.makeText(getApplicationContext(),
-                        "Position :" + itemPosition + "  ListItem : " + itemValue, Toast.LENGTH_LONG)
+                        "Position :" + itemPosition + "  ListItem : " + raceName, Toast.LENGTH_LONG)
                         .show();
+                DataStore.getInstance().setRace(raceName);
+                FirebaseHelper.getInstance().addRacer();
                 finish();
 
             }
