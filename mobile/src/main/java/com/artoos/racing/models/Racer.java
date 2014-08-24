@@ -9,4 +9,12 @@ public class Racer
    public Double speed;
    public Double distance;
    public Integer steps;
+
+    public Racer(String name, Double speed, Double distance, Integer steps)
+    {
+        this.name = name;
+        this.speed = speed;
+        this.distance = distance;
+        this.steps = steps;
+    }
 }
