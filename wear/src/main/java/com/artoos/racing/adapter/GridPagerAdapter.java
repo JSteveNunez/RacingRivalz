@@ -6,6 +6,8 @@ import android.content.Context;
 import android.support.wearable.view.CardFragment;
 import android.support.wearable.view.FragmentGridPagerAdapter;
 
+import com.artoos.racing.R;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
@@ -82,12 +84,13 @@ public class GridPagerAdapter  extends FragmentGridPagerAdapter {
             text = "\nSteps: "+(int)steps+"\nCadence: "+(int)cadence;
         }
 
-        CardFragment fragment = CardFragment.create(title, text, 0);
+        CardFragment fragment = CardFragment.create(title, text, R.drawable.puma);
         // Advanced settings
         fragment.setCardGravity(2);
         fragment.setExpansionEnabled(false);
         fragment.setExpansionDirection(CardFragment.EXPAND_DOWN);
         fragment.setExpansionFactor(1.0f);
+
         return fragment;
     }
 

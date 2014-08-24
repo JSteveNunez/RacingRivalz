@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="TypefaceTextView">
+        <attr name="typeface"/>
+    </declare-styleable>
+
+    <!-- Changing the attribute must be reflected in the TypefaceManager -->
+    <attr name="typeface" format="enum">
+        <enum name="avenir_roman"       value="0"/>
+        <enum name="avenir_bold_italic" value="1"/>
+    </attr>
+
+</resources>
