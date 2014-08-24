@@ -10,7 +10,7 @@ public class Race
 {
     public String name;
     public boolean isDistance;
-    public double raceValue;
+    public long raceValue;
     public Map<String, Racer> racers = new HashMap<String, Racer>();
 
 

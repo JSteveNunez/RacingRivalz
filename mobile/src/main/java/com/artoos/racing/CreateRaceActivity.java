@@ -73,7 +73,7 @@ public class CreateRaceActivity extends Activity
     @OnClick(R.id.createRace)
     public void createRace()
     {
-        FirebaseHelper.getInstance().createNewRace("Mike's Race", true, 5.0);
+        FirebaseHelper.getInstance().createNewRace("Mike's Race", true, 5);
         finish();
     }
 
