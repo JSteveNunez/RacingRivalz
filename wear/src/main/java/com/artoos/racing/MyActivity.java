@@ -11,10 +11,10 @@ import android.widget.TextView;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.wearable.MessageApi;
+import com.google.android.gms.wearable.DataMap;
+import com.google.android.gms.wearable.PutDataMapRequest;
 import com.google.android.gms.wearable.Wearable;
 
-import racingrivals.artoos.com.racingrivals.R;
 
 public class MyActivity extends Activity implements SensorEventListener, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
@@ -43,9 +43,19 @@ public class MyActivity extends Activity implements SensorEventListener, GoogleA
                 .build();
     }
 
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mGoogleApiClient.disconnect();
+    }
+
     @Override
     protected void onStart() {
         super.onStart();
+        if (!mGoogleApiClient.isConnected()) {
+            mGoogleApiClient.connect();
+        }
         Sensor stepCounterSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
         sensorManager.registerListener(this, stepCounterSensor, SensorManager.SENSOR_DELAY_GAME);
     }
@@ -62,8 +72,13 @@ public class MyActivity extends Activity implements SensorEventListener, GoogleA
     @Override
     public void onSensorChanged(SensorEvent sensorEvent) {
         if(sensorEvent.sensor.getType()==Sensor.TYPE_STEP_COUNTER) {
-            if(mTextView!=null)
-            mTextView.setText(""+sensorEvent.values[0]);
+            if(mTextView!=null) {
+                mTextView.setText("" + sensorEvent.values[0]);
+                PutDataMapRequest putDataMapRequest = PutDataMapRequest.create("/test");
+                DataMap dataMap = putDataMapRequest.getDataMap();
+                dataMap.putDouble("steps",sensorEvent.values[0]);
+                Wearable.DataApi.putDataItem(mGoogleApiClient, putDataMapRequest.asPutDataRequest());
+            }
         }
     }
 
