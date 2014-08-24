@@ -8,7 +8,6 @@ import android.support.wearable.view.FragmentGridPagerAdapter;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 import java.util.TreeMap;
 
 /**
@@ -22,103 +21,73 @@ public class GridPagerAdapter  extends FragmentGridPagerAdapter {
     public GridPagerAdapter(Context ctx, FragmentManager fm) {
         super(fm);
         mContext = ctx;
-        dataMap = new TreeMap();
+        dataMap = new TreeMap<Integer, HashMap<String, Object>>();
+
+        Map racer = new HashMap<String, Object>();
+        racer.put("name", "Steve");
+        racer.put("speed", 50.0);
+        racer.put("pace", 60.0);
+        racer.put("distance", 23.0);
+        racer.put("steps", 1234);
+        racer.put("cadence", 90);
+        racer.put("points", 12578);
+        racer.put("position", 1);
+        dataMap.put(12578, racer);
+
+        racer = new HashMap<String, Object>();
+        racer.put("name", "Jeff");
+        racer.put("speed", 20.0);
+        racer.put("pace", 10.0);
+        racer.put("distance", 33.0);
+        racer.put("steps", 1234);
+        racer.put("cadence", 90);
+        racer.put("points", 6324);
+        racer.put("position", 2);
+        dataMap.put(6324, racer);
     }
-
-//    static final int[] BG_IMAGES = new int[] {
-//            R.drawable.debug_background_1,
-//            R.drawable.debug_background_2,
-//            R.drawable.debug_background_3,
-//            R.drawable.debug_background_4,
-//            R.drawable.debug_background_5
-//    };
-
-//    /** A simple container for static data in each page */
-//    private static class Page {
-//        int titleRes;
-//        int textRes;
-//        int iconRes;
-//        int cardGravity = Gravity.BOTTOM;
-//        boolean expansionEnabled = true;
-//        float expansionFactor = 1.0f;
-//        int expansionDirection = CardFragment.EXPAND_DOWN;
-//
-//        public Page(int titleRes, int textRes, boolean expansion) {
-//            this(titleRes, textRes, 0);
-//            this.expansionEnabled = expansion;
-//        }
-//
-//        public Page(int titleRes, int textRes, boolean expansion, float expansionFactor) {
-//            this(titleRes, textRes, 0);
-//            this.expansionEnabled = expansion;
-//            this.expansionFactor = expansionFactor;
-//        }
-//
-//        public Page(int titleRes, int textRes, int iconRes) {
-//            this.titleRes = titleRes;
-//            this.textRes = textRes;
-//            this.iconRes = iconRes;
-//        }
-//
-//        public Page(int titleRes, int textRes, int iconRes, int gravity) {
-//            this.titleRes = titleRes;
-//            this.textRes = textRes;
-//            this.iconRes = iconRes;
-//            this.cardGravity = gravity;
-//        }
-//    }
-//
-//
-//
-//    private final Page[][] PAGES = {
-//            {
-//                    new Page(R.string.welcome_title, R.string.welcome_text, R.drawable.bugdroid,
-//                            Gravity.CENTER_VERTICAL),
-//            },
-//            {
-//                    new Page(R.string.about_title, R.string.about_text, false),
-//            },
-//            {
-//                    new Page(R.string.cards_title, R.string.cards_text, true, 2),
-//                    new Page(R.string.expansion_title, R.string.expansion_text, true, 10),
-//            },
-//            {
-//                    new Page(R.string.backgrounds_title, R.string.backgrounds_text, true, 2),
-//                    new Page(R.string.columns_title, R.string.columns_text, true, 2)
-//            },
-//            {
-//                    new Page(R.string.dismiss_title, R.string.dismiss_text, R.drawable.bugdroid,
-//                            Gravity.CENTER_VERTICAL),
-//            },
-//
-//    };
 
     @Override
     public Fragment getFragment(int row, int col) {
-        Map racerDataMap = (HashMap<String, Object>)dataMap.keySet().toArray()[row];
+        int index = getRowCount()-1-row;
+        int intRow = (Integer)dataMap.keySet().toArray()[index];
+        Object o = dataMap.get(intRow);
+        Map racerDataMap = (HashMap<Integer, Object>) o;
 
-        String title = (String)racerDataMap.get("name");
+        String name = (String)racerDataMap.get("name");
+        double speed = (Double)racerDataMap.get("speed");
+        double pace = (Double)racerDataMap.get("pace");
+        double distance = (Double)racerDataMap.get("distance");
+        int steps = (Integer)racerDataMap.get("steps");
+        int cadence = (Integer)racerDataMap.get("cadence");
+        int points = (Integer)racerDataMap.get("points");
+        int position = (Integer)racerDataMap.get("position");
+        String positionStr = ""+position;
+        if(position==1)
+            positionStr+="st";
+        else if(position==2)
+            positionStr+="nd";
+        else if(position==3)
+            positionStr+="rd";
+        else
+            positionStr+="th";
+        String title = positionStr+": "+name;
         String text = "";
         if(col==0) {
-            title = ""
-            text = (String) racerDataMap.get("name");
+            text = "\nPoints: "+points;
         } else if(col==1) {
-            text = (String) racerDataMap.get("name");
+            text = "\nSpeed: "+(int)speed+"\nPace: "+(int)pace;
         } else if(col==2) {
-            text = (String) racerDataMap.get("name");
+            text = "\nDistance: "+(int)distance;
         } else if(col==3) {
-
+            text = "\nSteps: "+(int)steps+"\nCadence: "+(int)cadence;
         }
 
-        Page page = PAGES[row][col];
-        String title = page.titleRes != 0 ? mContext.getString(page.titleRes) : null;
-        String text = page.textRes != 0 ? mContext.getString(page.textRes) : null;
-        CardFragment fragment = CardFragment.create(title, text, page.iconRes);
+        CardFragment fragment = CardFragment.create(title, text, 0);
         // Advanced settings
-        fragment.setCardGravity(page.cardGravity);
-        fragment.setExpansionEnabled(page.expansionEnabled);
-        fragment.setExpansionDirection(page.expansionDirection);
-        fragment.setExpansionFactor(page.expansionFactor);
+        fragment.setCardGravity(2);
+        fragment.setExpansionEnabled(false);
+        fragment.setExpansionDirection(CardFragment.EXPAND_DOWN);
+        fragment.setExpansionFactor(1.0f);
         return fragment;
     }
 
