@@ -7,9 +7,6 @@ import com.firebase.client.DataSnapshot;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * Created by Nakhimovich on 8/23/14.
  */
@@ -52,23 +49,22 @@ public class FirebaseSetup
 
         //  String json = jsonParser.convertObjectToJSON(rivals);
         com.firebase.client.Firebase ref = new com.firebase.client.Firebase("https://blistering-fire-2373.firebaseio.com/");
-        com.firebase.client.Firebase rivalRef = ref.child("rival");
-        rivalRef.setValue(rivals);
-        com.firebase.client.Firebase racers = rivalRef.child("races").child(myracename).child("racers");
+        ref.setValue(rivals);
+//        com.firebase.client.Firebase racers = ref.child("races").child(myracename).child("racers");
+//
+//
+//        HashMap<String, Object> racersContainer = new HashMap<String, Object>();
+//
+//        Map<String, Object> newRacer = new HashMap<String, Object>();
+//        newRacer.put("name", "steve2");
+//
+//
+//        racersContainer.put("steve2", newRacer);
+//
+//        racers.updateChildren(racersContainer);
 
 
-        HashMap<String, Object> racersContainer = new HashMap<String, Object>();
-
-        Map<String, Object> newRacer = new HashMap<String, Object>();
-        newRacer.put("name", "steve2");
-
-
-        racersContainer.put("steve2", newRacer);
-
-        racers.updateChildren(racersContainer);
-
-
-        rivalRef.addValueEventListener(new ValueEventListener()
+        ref.addValueEventListener(new ValueEventListener()
         {
             @Override
             public void onDataChange(DataSnapshot snapshot)
