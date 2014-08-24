@@ -5,7 +5,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_my_activity2">MyActivity2</string>
-    <string name="title_activity_notused">NotusedActivity</string>
-    <string name="title_activity_create_race">CreateRaceActivity</string>
+    <string name="title_activity_notused">Join Race</string>
+    <string name="title_activity_create_race">Create Race</string>
 
 </resources>

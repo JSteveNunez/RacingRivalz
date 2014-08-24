@@ -7,6 +7,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.artoos.racing.models.Racer;
 import com.artoos.racing.utils.DataStore;
@@ -24,6 +26,14 @@ public class FirstActivity extends Activity
     Button startRace;
     @InjectView(R.id.leaveRace)
     Button leaveRace;
+    @InjectView(R.id.enterUserName)
+    EditText enterUserName;
+    @InjectView(R.id.userName)
+    TextView userName;
+    @InjectView(R.id.userNameContainer)
+    LinearLayout userNameContainer;
+    @InjectView(R.id.submitName)
+    Button submitName;
     FirebaseHelper firebase = FirebaseHelper.getInstance();
 
     @Override
@@ -44,6 +54,18 @@ public class FirstActivity extends Activity
             raceText.setText("No races! Join or make a race");
             startRace.setVisibility(View.GONE);
             leaveRace.setVisibility(View.GONE);
+        }
+
+        if (DataStore.getInstance().getRacer() != null && DataStore.getInstance().getRacer().getName() != null && DataStore.getInstance().getRacer().getName().length() > 1)
+        {
+            userName.setVisibility(View.VISIBLE);
+            userName.setText(DataStore.getInstance().getRacer().getName());
+            enterUserName.setVisibility(View.GONE);
+            submitName.setVisibility(View.GONE);
+        } else {
+            userName.setVisibility(View.GONE);
+            enterUserName.setVisibility(View.VISIBLE);
+            submitName.setVisibility(View.VISIBLE);
         }
     }
 
@@ -67,6 +89,18 @@ public class FirstActivity extends Activity
 
     }
 
+    @OnClick(R.id.submitName)
+    public void submitName()
+    {
+        Racer racer = new Racer();
+        racer.setName(enterUserName.getText().toString());
+        DataStore.getInstance().setRacer(racer);
+
+        userName.setVisibility(View.VISIBLE);
+        enterUserName.setVisibility(View.GONE);
+        submitName.setVisibility(View.GONE);
+        userName.setText(DataStore.getInstance().getRacer().getName());
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu)

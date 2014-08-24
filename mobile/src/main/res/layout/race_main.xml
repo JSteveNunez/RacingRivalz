@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:weightSum="4">
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:weightSum="4">
 
     <ImageView
         android:id="@+id/puma"
@@ -12,12 +13,44 @@
         android:src="@drawable/puma"
         android:layout_centerHorizontal="true"/>
 
-    <TextView
-        android:id="@+id/raceText"
-        android:layout_below="@+id/puma"
+    <LinearLayout
+        android:id="@+id/userNameContainer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="@dimen/padding_large"
+        android:layout_below="@+id/puma"
+        android:layout_centerHorizontal="true">
+
+        <EditText
+            android:id="@+id/enterUserName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/padding_small"
+            android:textSize="@dimen/text_xlarge"
+            android:hint="Enter name"
+            />
+        <Button android:id="@+id/submitName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Done"
+            android:background="@drawable/orange_button_pressed" />
+
+        <TextView
+            android:id="@+id/userName"
+            android:layout_below="@+id/puma"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_medium"
+            android:textSize="@dimen/text_xlarge"
+            android:layout_centerHorizontal="true"
+            />
+
+    </LinearLayout>
+    <TextView
+        android:id="@+id/raceText"
+        android:layout_below="@id/userNameContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_small"
         android:textSize="@dimen/text_xlarge"
         android:layout_centerHorizontal="true"/>
 
@@ -27,6 +60,7 @@
         android:layout_height="170dp"
         android:orientation="horizontal"
         android:layout_alignParentBottom="true">
+
         <Button
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
