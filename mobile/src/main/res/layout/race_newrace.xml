@@ -52,11 +52,24 @@
             android:checked="false" />
     </RadioGroup>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Distance/Time"
+        android:id="@+id/valueLabel" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/value" />
+
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:text="Start Race"
-        android:id="@+id/startRace"
+        android:id="@+id/createRace"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="100dp"
         />

@@ -52,6 +52,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.artoos.racing.FirstActivity" />
         </activity>
+        <activity
+            android:name="com.artoos.racing.CreateRaceActivity"
+            android:label="@string/title_activity_create_race" >
+        </activity>
     </application>
 
 </manifest>

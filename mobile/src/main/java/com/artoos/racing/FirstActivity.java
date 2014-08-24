@@ -5,16 +5,28 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
+import com.artoos.racing.models.Racer;
+import com.artoos.racing.utils.DataStore;
 import com.artoos.racing.utils.FirebaseHelper;
 
 import butterknife.ButterKnife;
+import butterknife.InjectView;
 import butterknife.OnClick;
 import racingrivals.artoos.com.racingrivals.R;
 
 
 public class FirstActivity extends Activity
 {
+    @InjectView(R.id.raceText)
+    TextView raceText;
+    @InjectView(R.id.startRace)
+    Button startRace;
+    @InjectView(R.id.leaveRace)
+    Button leaveRace;
     FirebaseHelper firebase = FirebaseHelper.getInstance();
 
     @Override
@@ -26,19 +38,29 @@ public class FirstActivity extends Activity
         setContentView(R.layout.race_main);
         ButterKnife.inject(this);
         firebase.seedRace();
+        String race = DataStore.getInstance().getRace();
+
+        if (race.length() > 0)
+        {
+            raceText.setText(race);
+        } else {
+            raceText.setText("No races! Join or make a race");
+        }
     }
 
 
     @OnClick(R.id.newRace)
     public void newRace()
     {
-
+        CreateRaceActivity.getLaunchIntent(this);
     }
 
     @OnClick(R.id.joinRace)
     public void joinRace()
     {
-       ListActivity.getLaunchIntent(this);
+        //TODO: move to another screen
+        DataStore.getInstance().setRacer(new Racer("Mike"));
+        ListActivity.getLaunchIntent(this);
     }
 
     @OnClick(R.id.leaveRace)
