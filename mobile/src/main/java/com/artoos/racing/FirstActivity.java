@@ -5,9 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-
 import com.artoos.racing.utils.FirebaseHelper;
-
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import racingrivals.artoos.com.racingrivals.R;

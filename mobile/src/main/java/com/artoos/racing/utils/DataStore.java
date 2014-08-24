@@ -9,20 +9,15 @@ import com.firebase.client.Firebase;
 public class DataStore
 {
     public Racer racer;
-    public String race="FakeRace2";
+    public String race="";
     Firebase baseRef = new Firebase("https://blistering-fire-2373.firebaseio.com/");
     Firebase racesRef = baseRef.child("races");
-
-
 
     private static DataStore ourInstance = new DataStore();
     public static DataStore getInstance()
     {
         return ourInstance;
     }
-
-
-
 
     private DataStore()
     {
