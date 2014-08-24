@@ -38,7 +38,7 @@ public class CreateRaceActivity extends Activity
     @InjectView(R.id.rivalry)
     ToggleButton rivalry;
     private String name;
-    private boolean isDistance;
+    private boolean isDistance = true;
     private long distanceOrTime;
 
     public static void getLaunchIntent(Context context)

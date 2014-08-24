@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.artoos.racing.models.Racer;
 import com.artoos.racing.utils.DataStore;
 import com.artoos.racing.utils.FirebaseHelper;
@@ -45,11 +47,19 @@ public class FirstActivity extends Activity
         setContentView(R.layout.race_main);
         ButterKnife.inject(this);
         firebase.seedRace();
+    }
+
+    public void onResume()
+    {
+        super.onResume();
+
         String race = DataStore.getInstance().getRace();
 
         if (race.length() > 0)
         {
             raceText.setText(race);
+            startRace.setVisibility(View.VISIBLE);
+            leaveRace.setVisibility(View.VISIBLE);
         } else {
             raceText.setText("No races! Join or make a race");
             startRace.setVisibility(View.GONE);
@@ -78,10 +88,14 @@ public class FirstActivity extends Activity
     @OnClick(R.id.joinRace)
     public void joinRace()
     {
-        //TODO: move to another screen
-        DataStore.getInstance().setRacer(new Racer("Mike"));
-        ListActivity.getLaunchIntent(this);
+        if (DataStore.getInstance().getRacer()!=null)
+        {
+            ListActivity.getLaunchIntent(this);
+        } else {
+            Toast.makeText(this, "Please enter your name", Toast.LENGTH_SHORT).show();
+        }
     }
+
 
     @OnClick(R.id.leaveRace)
     public void leaveRace()

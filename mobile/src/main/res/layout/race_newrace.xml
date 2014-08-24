@@ -15,7 +15,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Race Name"
             android:textStyle="bold"
-            android:textSize="@dimen/text_large"
+            android:textSize="@dimen/text_xlarge"
             android:padding="@dimen/padding_medium"
             android:id="@+id/textView"/>
 
@@ -100,7 +100,7 @@
             android:padding="@dimen/padding_medium"
             android:id="@+id/valueLabel"
             android:textStyle="bold"
-            android:textSize="@dimen/text_large"/>
+            android:textSize="@dimen/text_xlarge"/>
 
         <com.artoos.racing.utils.typeface.TypefaceEditText
             android:layout_width="match_parent"

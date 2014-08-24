@@ -150,7 +150,7 @@ public class ListActivity extends Activity
             textViewName.setText(currentRace.name);
 
             TextView textViewType = (TextView) rowView.findViewById(R.id.raceType);
-            if(currentRace.isDistance == true){
+            if(currentRace.isDistance){
                 textViewType.setText("Distance");
             }else{
                 textViewType.setText("Time");
