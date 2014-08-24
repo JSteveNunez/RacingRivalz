@@ -3,27 +3,40 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="1">
+    android:weightSum="4">
 
     <Button
-        android:layout_width="170dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Make a new Race"
-        android:id="@+id/button"
-        android:layout_gravity="center_horizontal" />
+        android:id="@+id/newRace"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="1"
+        />
 
     <Button
-        android:layout_width="170dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Join a Race"
-        android:id="@+id/button2"
-        android:layout_gravity="center_horizontal" />
+        android:id="@+id/joinRace"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="1"/>
 
     <Button
-        android:layout_width="170dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Leave a Race"
-        android:id="@+id/button3"
-        android:layout_gravity="center_horizontal" />
+        android:id="@+id/leaveRace"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="1"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Start a Race"
+        android:id="@+id/startRace"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="1"/>
+
 
 </LinearLayout>

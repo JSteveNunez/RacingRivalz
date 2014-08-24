@@ -6,13 +6,16 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.artoos.racing.utils.FirebaseSetup;
+import com.artoos.racing.utils.FirebaseHelper;
 
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import racingrivals.artoos.com.racingrivals.R;
 
 
-public class MyActivity2 extends Activity
+public class FirstActivity extends Activity
 {
+    FirebaseHelper firebase = FirebaseHelper.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -20,9 +23,28 @@ public class MyActivity2 extends Activity
         super.onCreate(savedInstanceState);
         Intent intent = new Intent(this, FireBaseService.class);
         startService(intent);
-        setContentView(R.layout.activity_my_activity2);
-        FirebaseSetup firebase = new FirebaseSetup();
+        setContentView(R.layout.race_main);
+        ButterKnife.inject(this);
         firebase.seedRace();
+    }
+
+
+    @OnClick(R.id.newRace)
+    public void newRace()
+    {
+
+    }
+
+    @OnClick(R.id.joinRace)
+    public void joinRace()
+    {
+       ListActivity.getLaunchIntent(this);
+    }
+
+    @OnClick(R.id.leaveRace)
+    public void leaveRace()
+    {
+
     }
 
 

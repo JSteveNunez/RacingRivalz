@@ -1,6 +1,6 @@
 package com.artoos.racing;
 
-import com.artoos.racing.utils.FirebaseSetup;
+import com.artoos.racing.utils.FirebaseHelper;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,7 +16,7 @@ public class FireBaseTest extends BaseTestCase
     @Test
     public void testDataOperations() throws Exception
     {
-        FirebaseSetup firebase=new FirebaseSetup();
+        FirebaseHelper firebase=new FirebaseHelper();
         firebase.seedRace();
     }
 }

@@ -10,7 +10,8 @@ public class DataStore
 {
     public Racer racer;
     public String race="FakeRace2";
-    Firebase baseRef = new com.firebase.client.Firebase("https://blistering-fire-2373.firebaseio.com/");
+    Firebase baseRef = new Firebase("https://blistering-fire-2373.firebaseio.com/");
+    Firebase racesRef = baseRef.child("races");
 
 
 
@@ -51,5 +52,20 @@ public class DataStore
     public Firebase getBaseRef()
     {
         return baseRef;
+    }
+
+    public void setBaseRef(Firebase baseRef)
+    {
+        this.baseRef = baseRef;
+    }
+
+    public Firebase getRacesRef()
+    {
+        return racesRef;
+    }
+
+    public void setRacesRef(Firebase racesRef)
+    {
+        this.racesRef = racesRef;
     }
 }

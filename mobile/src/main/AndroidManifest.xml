@@ -21,7 +21,7 @@
             <!-- </intent-filter> -->
         </activity>
         <activity
-            android:name="com.artoos.racing.MyActivity2"
+            android:name="com.artoos.racing.FirstActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -40,6 +40,15 @@
             android:enabled="true"
             android:exported="true" >
         </service>
+
+        <activity
+            android:name="com.artoos.racing.ListActivity"
+            android:label="@string/title_activity_notused"
+            android:parentActivityName="com.artoos.racing.FirstActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.artoos.racing.FirstActivity" />
+        </activity>
     </application>
 
 </manifest>

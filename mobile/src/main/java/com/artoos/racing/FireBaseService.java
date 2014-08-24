@@ -16,13 +16,13 @@ public class FireBaseService extends Service {
     public void onCreate()
     {
         super.onCreate();
-        //  String json = jsonParser.convertObjectToJSON(rivals);
         DataStore.getInstance().getBaseRef().addValueEventListener(new ValueEventListener()
         {
             @Override
             public void onDataChange(DataSnapshot snapshot)
             {
-                // do some stuff once
+
+                //TODO:update watch display
             }
 
             @Override

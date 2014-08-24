@@ -52,5 +52,12 @@
             android:checked="false" />
     </RadioGroup>
 
-
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:text="Start Race"
+        android:id="@+id/startRace"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="100dp"
+        />
 </LinearLayout>

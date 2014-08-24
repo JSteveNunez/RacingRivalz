@@ -11,7 +11,7 @@ import java.util.Map;
 /**
  * Created by Nakhimovich on 8/23/14.
  */
-public class FirebaseSetup
+public class FirebaseHelper
 {
 
     private Firebase baseRef;
@@ -20,6 +20,22 @@ public class FirebaseSetup
     Firebase races;
     Firebase racers;
     private Firebase currentRace;
+
+
+    private static FirebaseHelper ourInstance = new FirebaseHelper();
+    public static FirebaseHelper getInstance()
+    {
+        return ourInstance;
+    }
+
+
+
+
+    private FirebaseHelper()
+    {
+
+    }
+
 
     public void seedRace()
     {
