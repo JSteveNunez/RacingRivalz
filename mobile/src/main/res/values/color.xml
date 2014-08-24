@@ -2,7 +2,7 @@
 <resources>
 
     <!--Theme Colors-->
-    <color name="theme_orange">#ea562d</color>
+    <color name="theme_orange">#fd920f</color>
     <color name="theme_orange_underline">#c94a27</color>
     <color name="theme_red">#ffee2c24</color>
     <color name="theme_red_pressed">#80ee2c24</color>
