@@ -6,11 +6,11 @@ package com.artoos.racing.models;
 public class Racer
 {
    public String name;
-   public Double speed;
-   public Double distance;
-   public Integer steps;
-   public Integer points;
-   public Integer position;
+   public double speed;
+   public double distance;
+   public int steps;
+   public int points;
+   public int position;
 
     public Racer(String name, Double speed, Double distance, Integer steps)
     {
@@ -18,6 +18,11 @@ public class Racer
         this.speed = speed;
         this.distance = distance;
         this.steps = steps;
+    }
+
+    public Racer(String name)
+    {
+        this.name = name;
     }
 
 
