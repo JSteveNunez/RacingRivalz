@@ -112,6 +112,12 @@ public class FirebaseHelper
         HashMap<String, Object> racersContainer = new HashMap<String, Object>();
         Map<String, Object> newRacer = new HashMap<String, Object>();
         newRacer.put("name", dataStore.getRacer().name);
+        newRacer.put("speed",0);
+        newRacer.put("distance",0);
+        newRacer.put("steps",0);
+        newRacer.put("points",0);
+        newRacer.put("position",0);
+
         racersContainer.put(dataStore.getRacer().name, newRacer);
         racers.updateChildren(racersContainer);
     }

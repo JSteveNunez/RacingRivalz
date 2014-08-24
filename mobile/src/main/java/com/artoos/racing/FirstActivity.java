@@ -15,6 +15,10 @@ import android.widget.Toast;
 import com.artoos.racing.models.Racer;
 import com.artoos.racing.utils.DataStore;
 import com.artoos.racing.utils.FirebaseHelper;
+
+import java.util.Timer;
+import java.util.TimerTask;
+
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
@@ -136,5 +140,25 @@ public class FirstActivity extends Activity
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void timerTask()
+    {
+        Timer t = new Timer();
+        //Set the schedule function and rate
+        t.scheduleAtFixedRate(new TimerTask()
+                              {
+
+                                  @Override
+                                  public void run()
+                                  {
+                                      //Called each time when 1000 milliseconds (1 second) (the period parameter)
+                                  }
+
+                              },
+                //Set how long before to start calling the TimerTask (in milliseconds)
+                0,
+                //Set the amount of time between each execution (in milliseconds)
+                10000);
     }
 }
