@@ -48,7 +48,7 @@ public class FirebaseHelper
         // String fieldToUpdate = "distance";
         //updateRacerField(racers, fieldToUpdate);
 
-        addRace();
+       // addRace();
 
     }
 
@@ -107,6 +107,8 @@ public class FirebaseHelper
     public void addRacer()
     {
         currentRace = races.child(dataStore.getRace());
+        racers = currentRace.child("racers");
+
         HashMap<String, Object> racersContainer = new HashMap<String, Object>();
         Map<String, Object> newRacer = new HashMap<String, Object>();
         newRacer.put("name", dataStore.getRacer().name);
