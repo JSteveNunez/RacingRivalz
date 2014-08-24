@@ -9,7 +9,7 @@
         android:id="@+id/puma"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_launcher"
+        android:src="@drawable/puma"
         android:layout_centerHorizontal="true"/>
 
     <TextView
@@ -46,7 +46,7 @@
             android:id="@+id/joinRace"
             android:layout_gravity="center_horizontal"
             android:layout_weight="1"
-            android:background="@drawable/orange_button_pressed"
+            android:background="@drawable/red_button_pressed"
             android:textSize="@dimen/text_xlarge"
             android:padding="@dimen/padding_large"/>
     </LinearLayout>
@@ -81,7 +81,7 @@
             android:layout_weight="1"
             android:textSize="@dimen/text_xlarge"
             android:padding="@dimen/padding_large"
-            android:background="@drawable/red_button_pressed"
+            android:background="@drawable/yellow_button_pressed"
             />
     </LinearLayout>
 

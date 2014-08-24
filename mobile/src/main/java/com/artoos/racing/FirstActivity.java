@@ -45,9 +45,10 @@ public class FirstActivity extends Activity
             raceText.setText(race);
         } else {
             raceText.setText("No races! Join or make a race");
+            startRace.setVisibility(View.GONE);
+            leaveRace.setVisibility(View.GONE);
         }
     }
-
 
     @OnClick(R.id.newRace)
     public void newRace()

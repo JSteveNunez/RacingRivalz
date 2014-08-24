@@ -4,7 +4,7 @@
     <!--Theme Colors-->
     <color name="theme_orange">#fd920f</color>
     <color name="theme_orange_underline">#c94a27</color>
-    <color name="theme_red">#ffee2c24</color>
+    <color name="theme_red">#ffff0000</color>
     <color name="theme_red_pressed">#80ee2c24</color>
     <color name="theme_yellow">#fff7ef15</color>
     <color name="theme_yellow_pressed">#80f7ef15</color>
