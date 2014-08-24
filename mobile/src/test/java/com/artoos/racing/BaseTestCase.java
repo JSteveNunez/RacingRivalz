@@ -5,11 +5,15 @@ import android.content.Context;
 import android.test.AndroidTestCase;
 
 import org.junit.Before;
+import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
+import org.robolectric.annotation.Config;
 
 /**
  * Created by Nakhimovich on 8/23/14.
  */
+@RunWith(RobolectricGradleTestRunner.class)
+@Config(emulateSdk = 1)
 public abstract class BaseTestCase extends AndroidTestCase
 {
     Context context;
