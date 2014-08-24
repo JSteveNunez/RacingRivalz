@@ -10,6 +10,7 @@ public class Racer
    public Double distance;
    public Integer steps;
    public Integer points;
+   public Integer position;
 
     public Racer(String name, Double speed, Double distance, Integer steps)
     {
@@ -58,5 +59,25 @@ public class Racer
     public void setSteps(Integer steps)
     {
         this.steps = steps;
+    }
+
+    public Integer getPoints()
+    {
+        return points;
+    }
+
+    public void setPoints(Integer points)
+    {
+        this.points = points;
+    }
+
+    public Integer getPosition()
+    {
+        return position;
+    }
+
+    public void setPosition(Integer position)
+    {
+        this.position = position;
     }
 }
