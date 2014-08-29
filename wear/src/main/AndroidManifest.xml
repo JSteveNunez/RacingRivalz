@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.artoos.racing" >
+    package="com.artoos.racingrivalz" >
 
     <uses-feature android:name="android.hardware.type.watch" />
 
@@ -14,7 +14,7 @@
             android:value="@integer/google_play_services_version" />
 
         <activity
-            android:name="com.artoos.racing.RunningActivity"
+            android:name="com.artoos.racingrivalz.RunningActivity"
             android:label="@string/title_activity_running" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

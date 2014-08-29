@@ -9,7 +9,7 @@
                   android:layout_width="match_parent"
                   android:layout_height="match_parent">
 
-        <com.artoos.racing.utils.typeface.TypefaceTextView
+        <com.artoos.racingrivalz.utils.typeface.TypefaceTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
@@ -19,7 +19,7 @@
             android:padding="@dimen/padding_medium"
             android:id="@+id/textView"/>
 
-        <com.artoos.racing.utils.typeface.TypefaceEditText
+        <com.artoos.racingrivalz.utils.typeface.TypefaceEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/raceName"
@@ -92,7 +92,7 @@
 
         </LinearLayout>
 
-        <com.artoos.racing.utils.typeface.TypefaceTextView
+        <com.artoos.racingrivalz.utils.typeface.TypefaceTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
@@ -102,14 +102,14 @@
             android:textStyle="bold"
             android:textSize="@dimen/text_xlarge"/>
 
-        <com.artoos.racing.utils.typeface.TypefaceEditText
+        <com.artoos.racingrivalz.utils.typeface.TypefaceEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/padding_medium"
             android:id="@+id/value"
             android:hint="Enter value"/>
     </LinearLayout>
-    <com.artoos.racing.utils.typeface.TypefaceButton
+    <com.artoos.racingrivalz.utils.typeface.TypefaceButton
         android:layout_width="match_parent"
         android:layout_height="120dp"
         android:layout_alignParentBottom="true"

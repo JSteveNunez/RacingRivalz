@@ -20,7 +20,7 @@
         android:layout_below="@+id/puma"
         android:layout_centerHorizontal="true">
 
-        <com.artoos.racing.utils.typeface.TypefaceEditText
+        <com.artoos.racingrivalz.utils.typeface.TypefaceEditText
             android:id="@+id/enterUserName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -28,14 +28,14 @@
             android:textSize="@dimen/text_xlarge"
             android:hint="Enter name"
             />
-        <com.artoos.racing.utils.typeface.TypefaceButton
+        <com.artoos.racingrivalz.utils.typeface.TypefaceButton
             android:id="@+id/submitName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Done"
             android:background="@drawable/orange_button_pressed" />
 
-        <com.artoos.racing.utils.typeface.TypefaceTextView
+        <com.artoos.racingrivalz.utils.typeface.TypefaceTextView
             android:id="@+id/userName"
             android:layout_below="@+id/puma"
             android:layout_width="wrap_content"
@@ -46,7 +46,7 @@
             />
 
     </LinearLayout>
-    <com.artoos.racing.utils.typeface.TypefaceTextView
+    <com.artoos.racingrivalz.utils.typeface.TypefaceTextView
         android:id="@+id/raceText"
         android:layout_below="@id/userNameContainer"
         android:layout_width="wrap_content"
@@ -62,7 +62,7 @@
         android:orientation="horizontal"
         android:layout_alignParentBottom="true">
 
-        <com.artoos.racing.utils.typeface.TypefaceButton
+        <com.artoos.racingrivalz.utils.typeface.TypefaceButton
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
             android:text="Make a new Race"
@@ -74,7 +74,7 @@
             android:padding="@dimen/padding_large"
             />
 
-        <com.artoos.racing.utils.typeface.TypefaceButton
+        <com.artoos.racingrivalz.utils.typeface.TypefaceButton
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
             android:text="Join a Race"
@@ -94,7 +94,7 @@
         android:orientation="horizontal"
         >
 
-        <com.artoos.racing.utils.typeface.TypefaceButton
+        <com.artoos.racingrivalz.utils.typeface.TypefaceButton
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
             android:text="Leave Race"
@@ -106,7 +106,7 @@
             android:background="@drawable/red_button_pressed"
             />
 
-        <com.artoos.racing.utils.typeface.TypefaceButton
+        <com.artoos.racingrivalz.utils.typeface.TypefaceButton
             android:layout_above="@+id/race_buttons"
             android:layout_width="match_parent"
             android:layout_height="fill_parent"

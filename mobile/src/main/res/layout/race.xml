@@ -17,7 +17,7 @@
         android:orientation="vertical"
         android:padding="@dimen/padding_small">
 
-        <com.artoos.racing.utils.typeface.AutoResizeTextView
+        <com.artoos.racingrivalz.utils.typeface.AutoResizeTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <com.artoos.racing.utils.typeface.AutoResizeTextView
+            <com.artoos.racingrivalz.utils.typeface.AutoResizeTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
@@ -41,7 +41,7 @@
                 android:id="@+id/raceType"
                 android:layout_margin="@dimen/padding_small"/>
 
-            <com.artoos.racing.utils.typeface.TypefaceTextView
+            <com.artoos.racingrivalz.utils.typeface.TypefaceTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
